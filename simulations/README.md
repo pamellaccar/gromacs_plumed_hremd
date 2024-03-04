@@ -148,6 +148,13 @@ done
 mpirun -np 10 gmx_mpi mdrun -plumed plumed.dat -s md.tpr -v -deffnm md -multidir 0 1 2 3 4 -replex 100 -hrex -dlb no
 ```
 
+Analyze results from replica 0:
+
+```
+cd 0
+echo 1 0 |gmx_mpi trjconv -s md.tpr -f md.gro -o processed.gro -ur compact -pbc mol -center
+echo 1 0 |gmx_mpi trjconv -s md.tpr -f md.xtc -o processed.xtc -ur compact -pbc mol -center
+```
 
 GROMACS reminds you: "Shit happens!" (Pulp Fiction)
 
